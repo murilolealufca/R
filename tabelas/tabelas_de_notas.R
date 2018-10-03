@@ -1,7 +1,7 @@
 library(readxl) #Inicia biblioteca para importação de planilhas
 library(xtable) #Inicia biblioteca para conversão de tabelas para o Latex
 notas <- read_excel("~/Documentos/Trabalho/2018.2/CENTEC/Frequências.xlsx", range = "TEE-MAT!E6:E53") #Abre conjunto de dados
-
+notas <- read_excel("~/Documentos/Trabalho/2018.2/Leão/Contatos.xlsx", range = "Planilha1!J1:J52") #Abre conjunto de dados
 notamedia<-mean(x = notas$Nota, na.rm = TRUE) #Calcula e armazena a média ignorando dados não preenchidos
 notasd<-sd(x = notas$Nota, na.rm = TRUE) #Calcula e armazena o desvio padrão ignorando dados não preenchidos
 
