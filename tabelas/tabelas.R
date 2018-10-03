@@ -1,12 +1,13 @@
-library(readxl) #Inicia biblioteca para conversão de tabelas para o Latex
+library(readxl) #Inicia biblioteca para importação de planilhas
+library(xtable) #Inicia biblioteca para conversão de tabelas para o Latex
 oleo <- read_excel("~/Documentos/PRODER/Artigos/oleo/oleo.xlsx") #Abre conjunto de dados
 
-umidademedia<-mean(x = oleo$Umidade) #Calcula e armazena a média
-umidadesd<-sd(x = oleo$Umidade) #Calcula e armazena o desvio padrão
-calciomedia<-mean(x = oleo$Cálcio)
-calciosd<-sd(x = oleo$Cálcio)
+umidademedia<-mean(x = oleo$Umidade, na.rm = TRUE) #Calcula e armazena a média ignorando dados não preenchidos
+umidadesd<-sd(x = oleo$Umidade, na.rm = TRUE) #Calcula e armazena o desvio padrão ignorando dados não preenchidos
+calciomedia<-mean(x = oleo$Cálcio, na.rm = TRUE)
+calciosd<-sd(x = oleo$Cálcio, na.rm = TRUE)
 
-tabela<-c(umidademedia,umidadesd,calciomedia,calciosd) #Agrega valores calculados
+tabela<-c(umidademedia,calciomedia,umidadesd,calciosd) #Agrega valores calculados
 tabela<-matrix(data = tabela, nrow = 2, ncol = 2) #Cria tabela com valores agregados
 
 colnames(tabela) <- c("Media", "SD") #Nomeia as colunas
