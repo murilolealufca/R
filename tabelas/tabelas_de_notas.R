@@ -12,5 +12,5 @@ colnames(tabela) <- c("Media", "SD") #Nomeia as colunas
 rownames(tabela) <- c("AV1") #Nomeia as linhas
 tabela #Mostra tabela montada
 
-xtable(tabela, caption=NULL, label="teste", align=NULL, vsep=NULL, digits=NULL,
+xtable(tabela, caption="Tabela", label="teste", align=NULL, vsep=NULL, digits=NULL,
        display=NULL) #Realiza conversão para o Latex
