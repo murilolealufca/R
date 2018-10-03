@@ -1,5 +1,5 @@
 library(readxl) #Inicia biblioteca para conversão de tabelas para o Latex
-oleo <- read_excel("Documentos/PRODER/Artigos/oleo/oleo.xlsx") #Abre conjunto de dados
+oleo <- read_excel("~/Documentos/PRODER/Artigos/oleo/oleo.xlsx") #Abre conjunto de dados
 
 umidademedia<-mean(x = oleo$Umidade) #Calcula e armazena a média
 umidadesd<-sd(x = oleo$Umidade) #Calcula e armazena o desvio padrão
