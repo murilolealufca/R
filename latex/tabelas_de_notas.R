@@ -1,15 +1,21 @@
 library(readxl) #Inicia biblioteca para importação de planilhas
 library(xtable) #Inicia biblioteca para conversão de tabelas para o Latex
-notas <- read_excel("~/Documentos/Trabalho/2018.2/CENTEC/Frequências.xlsx", range = "TEE-MAT!E6:E53") #Abre conjunto de dados
+notasmat <- read_excel("~/Documentos/Trabalho/2018.2/CENTEC/Frequências.xlsx", range = "TEE-MAT!E6:E53") #Abre conjunto de dados
+notased <- read_excel("~/Documentos/Trabalho/2018.2/CENTEC/Frequências.xlsx", range = "TE-SD!H6:H39") #Abre conjunto de dados
 notas <- read_excel("~/Documentos/Trabalho/2018.2/Leão/Contatos.xlsx", range = "Planilha1!J1:J52") #Abre conjunto de dados
+
+notamediamat<-mean(x = notasmat$Nota, na.rm = TRUE) #Calcula e armazena a média ignorando dados não preenchidos
+notasdmat<-sd(x = notasmat$Nota, na.rm = TRUE) #Calcula e armazena o desvio padrão ignorando dados não preenchidos
+notamediaed<-mean(x = notased$AV1, na.rm = TRUE) #Calcula e armazena a média ignorando dados não preenchidos
+notasded<-sd(x = notased$AV1, na.rm = TRUE) #Calcula e armazena o desvio padrão ignorando dados não preenchidos
 notamedia<-mean(x = notas$Nota, na.rm = TRUE) #Calcula e armazena a média ignorando dados não preenchidos
 notasd<-sd(x = notas$Nota, na.rm = TRUE) #Calcula e armazena o desvio padrão ignorando dados não preenchidos
 
-tabela<-c(notamedia,notasd) #Agrega valores calculados
-tabela<-matrix(data = tabela, nrow = 1, ncol = 2) #Cria tabela com valores agregados
+tabela<-c(notamediamat,notamediaed,notasdmat,notasded) #Agrega valores calculados
+tabela<-matrix(data = tabela, nrow = 2, ncol = 2) #Cria tabela com valores agregados
 
 colnames(tabela) <- c("Media", "SD") #Nomeia as colunas
-rownames(tabela) <- c("AV1") #Nomeia as linhas
+rownames(tabela) <- c("AV1 - MAT", "AV1 - ED") #Nomeia as linhas
 tabela #Mostra tabela montada
 
 xtable(tabela, caption="Tabela", label="teste", align=NULL, vsep=NULL, digits=NULL,
