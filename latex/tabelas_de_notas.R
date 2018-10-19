@@ -2,14 +2,14 @@ library(readxl) #Inicia biblioteca para importação de planilhas
 library(xtable) #Inicia biblioteca para conversão de tabelas para o Latex
 library(qcc) #Inicia biblioteca para plotagem de cartas de controle
 
-PATH <- "~/Documentos/RCodes/Motos.xlsx" #Indica o endereço do arquivo da planilha
+PATH <- "~/Documentos/RCodes/Moto.xlsx" #Indica o endereço do arquivo da planilha
 table_name <- "Planilha" #Indica o nome da planilha
 
 table1 <- read_excel(PATH, range = paste(table_name,"1!B3:B100", sep = "")) #Abre conjunto de dados
 name1 <- read_excel(PATH, range = paste(table_name,"1!B1:B2", sep = "")) #Abre conjunto de dados
 table2 <- read_excel(PATH, range = paste(table_name,"1!C3:C100", sep = "")) #Abre conjunto de dados
 name2 <- read_excel(PATH, range = paste(table_name,"1!C1:C2", sep = "")) #Abre conjunto de dados
-table3 <- read_excel(PATH, range = paste(table_name,"1!D3:D9", sep = "")) #Abre conjunto de dados
+table3 <- read_excel(PATH, range = paste(table_name,"1!D3:D100", sep = "")) #Abre conjunto de dados
 name3 <- read_excel(PATH, range = paste(table_name,"1!D1:D2", sep = "")) #Abre conjunto de dados
 table4 <- read_excel(PATH, range = paste(table_name,"1!E3:E29", sep = "")) #Abre conjunto de dados
 name4 <- read_excel(PATH, range = paste(table_name,"1!E1:E2", sep = "")) #Abre conjunto de dados
@@ -55,12 +55,12 @@ colnames(tabela) <- c("Media", "Standard Deviation") #Nomeia as colunas
 rownames(tabela) <- c(name1, name2, name3) #, name3, name4, name5, name6, name7, name8, name9, name10) #Nomeia as linhas
 tabela #Mostra tabela montada
 
-#plot.xbar = qcc(data, type="xbar")
+plot.xbar = qcc(table1, type="xbar")
 #plot.xbar = qcc(data, type="R")
 #plot.xbar = qcc(table4, type="S")
-#plot.xbar = qcc(table4, type="xbar.one", title="", xlab="", ylab="")
+plot.xbar = qcc(table1, type="xbar.one", title="", xlab="", ylab="")
 #plot.xbar = qcc(table4, type="p", sizes = 10)
-#plot.xbar = qcc(table4, type="np", sizes = 10)
+plot.xbar = qcc(table1, type="np", sizes = 10)
 #plot.xbar = qcc(data, type="c")
 #plot.xbar = qcc(data, type="u")
 #plot.xbar = qcc(data, type="g")
